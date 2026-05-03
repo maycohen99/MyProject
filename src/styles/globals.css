@@ -2,75 +2,73 @@
 
 @theme {
   --color-surface: #ffffff;
-  --color-surface-dim: #f8f6f4;
+  --color-surface-dim: #faf9f8;
   --color-surface-bright: #ffffff;
   --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #fbfaf9;
-  --color-surface-container: #f5f3f0;
-  --color-surface-container-high: #efece9;
-  --color-surface-container-highest: #e8e5e1;
+  --color-surface-container-low: #f3f2f1;
+  --color-surface-container: #edebe9;
+  --color-surface-container-high: #e1dfdd;
+  --color-surface-container-highest: #c8c6c4;
   
-  --color-on-surface: #2c2926;
-  --color-on-surface-variant: #75706b;
-  --color-inverse-surface: #2c2926;
+  --color-on-surface: #323130;
+  --color-on-surface-variant: #605e5c;
+  --color-inverse-surface: #323130;
   --color-inverse-on-surface: #ffffff;
   
-  --color-outline: #d6d2cd;
-  --color-outline-variant: #eae6e1;
-  --color-surface-tint: #ff7e67;
+  --color-outline: #8a8886;
+  --color-outline-variant: #c8c6c4;
+  --color-surface-tint: #0078d4;
   
-  --color-primary: #ff7e67; /* Clean Salmon/Coral */
+  --color-primary: #0078d4; /* Microsoft Blue */
   --color-on-primary: #ffffff;
-  --color-primary-container: #ffefeb;
-  --color-on-primary-container: #5c2016;
-  --color-inverse-primary: #ffb7a8;
+  --color-primary-container: #c7e0f4;
+  --color-on-primary-container: #004578;
+  --color-inverse-primary: #6cb8f6;
   
-  --color-secondary: #75706b;
+  --color-secondary: #605e5c;
   --color-on-secondary: #ffffff;
-  --color-secondary-container: #f5f3f0;
-  --color-on-secondary-container: #2c2926;
+  --color-secondary-container: #f3f2f1;
+  --color-on-secondary-container: #323130;
   
-  --color-coral: #ff7e67;
+  --color-coral: #0078d4; /* Replaced coral with Microsoft Blue for accents */
   
-  --color-error: #e5534b;
+  --color-error: #a4262c;
   --color-on-error: #ffffff;
-  --color-error-container: #fdefee;
-  --color-on-error-container: #7a1d17;
+  --color-error-container: #fde7e9;
+  --color-on-error-container: #750b1c;
   
-  --color-success: #45b889;
-  --color-success-container: #eef9f4;
-  --color-on-success-container: #1b543b;
+  --color-success: #107c10;
+  --color-success-container: #dff6dd;
+  --color-on-success-container: #0f540f;
   
-  --color-background: #fcfcfb; /* Very clean warm white */
-  --color-on-background: #2c2926;
-  --color-surface-variant: #f5f3f0;
+  --color-background: #faf9f8; /* Microsoft main background */
+  --color-on-background: #323130;
+  --color-surface-variant: #f3f2f1;
   
-  --radius-sm: 0.5rem;
-  --radius-DEFAULT: 1rem;
-  --radius-md: 1.25rem;
-  --radius-lg: 1.5rem;
-  --radius-xl: 2rem;
+  /* Fluent Design Corner Radii (Windows 11 style) */
+  --radius-sm: 2px;
+  --radius-DEFAULT: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 8px;
   --radius-full: 9999px;
   
-  --font-sans: "Inter", sans-serif;
-  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-sans: "Segoe UI", "Inter", -apple-system, sans-serif;
+  --font-display: "Segoe UI", "Inter", -apple-system, sans-serif;
 
-  /* Ambient Shadows - extremely soft, barely there for clean look */
-  --shadow-ambient: 0 4px 24px rgba(44, 41, 38, 0.04);
-  --shadow-ambient-hover: 0 12px 32px rgba(44, 41, 38, 0.08);
+  /* Fluent Design Elevations (Shadows) */
+  --shadow-ambient: 0 1.6px 3.6px 0 rgba(0,0,0,0.132), 0 0.3px 0.9px 0 rgba(0,0,0,0.108);
+  --shadow-ambient-hover: 0 3.2px 7.2px 0 rgba(0,0,0,0.132), 0 0.6px 1.8px 0 rgba(0,0,0,0.108);
 }
 
 @layer base {
   body {
     background-color: var(--color-background);
-    /* Very subtle warm gradient to eliminate flat sterile look */
-    background-image: 
-      radial-gradient(circle at 50% 0%, rgba(255, 126, 103, 0.02) 0%, transparent 60%);
-    background-attachment: fixed;
+    background-image: none; /* Microsoft design is flat and solid */
     color: var(--color-on-background);
     font-family: var(--font-sans);
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 14px; /* Microsoft uses slightly smaller default text */
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
@@ -79,5 +77,6 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     color: var(--color-on-background);
+    font-weight: 600;
   }
 }
