@@ -36,20 +36,20 @@ export default function Header() {
   };
 
   return (
-    <header className="flex justify-between items-center py-6 mb-4 border-b-2 border-[#27272a]">
+    <header className="flex justify-between items-center py-6 mb-4 border-b border-[var(--color-outline)]">
       <div className="flex items-center gap-3">
-        <Link to="/" className="flex items-center gap-3 group transition-transform hover:-translate-y-0.5 duration-200">
-          <div className="bg-[var(--color-primary)] text-white p-2 rounded-none border-2 border-black shadow-[2px_2px_0px_#d0c4ff] group-hover:shadow-[3px_3px_0px_#ff5c00] transition-all">
+        <Link to="/" className="flex items-center gap-2.5 group transition-opacity">
+          <div className="bg-[var(--color-primary-container)] text-[var(--color-primary)] p-2.5 rounded-xl border border-[rgba(198,106,85,0.2)] group-hover:scale-105 transition-transform duration-300">
             <LayoutDashboard size={20} />
           </div>
-          <h1 className="text-2xl font-black tracking-tighter m-0 text-white uppercase font-display">
-            Tlush<span className="text-[var(--color-primary)]">Smart</span>
+          <h1 className="text-2xl font-extrabold tracking-tight m-0 text-[var(--color-secondary)] font-display">
+            Tlush<span className="text-[var(--color-primary)] font-normal italic">Smart</span>
           </h1>
         </Link>
       </div>
-      <div className="text-slate-300 text-sm font-bold flex items-center gap-3 select-none">
+      <div className="text-[var(--color-on-surface-variant)] text-sm font-medium flex items-center gap-3 select-none">
         <div className="flex items-center gap-1.5">
-          <span className="uppercase text-slate-500 text-xs tracking-widest font-black">USER /</span>
+          <span>שלום,</span>
           {isEditing ? (
             <div className="flex items-center gap-1">
               <input
@@ -58,28 +58,28 @@ export default function Header() {
                 onChange={(e) => setTempName(e.target.value)}
                 onBlur={handleSave}
                 onKeyDown={(e) => e.key === 'Enter' && handleSave()}
-                className="bg-black border-2 border-[var(--color-primary)] text-white rounded-none px-2 py-0.5 text-xs focus:outline-none w-24 text-center font-bold"
+                className="bg-white border border-[var(--color-outline-variant)] text-[var(--color-on-surface)] rounded-md px-2 py-0.5 text-xs focus:outline-none focus:border-[var(--color-primary)] w-24 text-center font-bold"
                 autoFocus
               />
             </div>
           ) : (
             <span 
               onClick={() => setIsEditing(true)}
-              className="text-[var(--color-secondary)] cursor-pointer hover:text-[var(--color-primary)] transition-colors underline decoration-2 decoration-[var(--color-coral)] font-bold flex items-center gap-1 group/name"
+              className="text-[var(--color-primary)] font-bold cursor-pointer hover:text-[var(--color-coral)] transition-colors underline decoration-1 decoration-[var(--color-primary)]/40 hover:decoration-[var(--color-coral)]/40 flex items-center gap-1 group/name"
               title="לחץ כדי לשנות שם"
             >
               {name}
-              <Edit2 size={10} className="text-slate-500 opacity-0 group-hover/name:opacity-100 transition-opacity ml-1 inline-block" />
+              <Edit2 size={10} className="text-[var(--color-on-surface-variant)] opacity-0 group-hover/name:opacity-100 transition-opacity ml-1 inline-block" />
             </span>
           )}
         </div>
-        <div className="w-0.5 h-3.5 bg-[#27272a]"></div>
+        <div className="w-px h-3.5 bg-[var(--color-outline-variant)]/60"></div>
         <button 
           onClick={handleLogout}
-          className="text-slate-500 hover:text-[var(--color-coral)] transition-colors p-1.5 border-2 border-transparent hover:border-[#27272a] bg-transparent flex items-center justify-center rounded-none"
+          className="text-[var(--color-on-surface-variant)] hover:text-[var(--color-coral)] transition-colors p-1.5 hover:bg-[var(--color-primary-container)] rounded-full flex items-center justify-center"
           title="התנתקות מהמערכת"
         >
-          <LogOut size={14} />
+          <LogOut size={15} />
         </button>
       </div>
     </header>

@@ -24,10 +24,11 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen flex flex-col items-center pb-20 relative bg-[#09090b] grid-bg overflow-hidden">
-        {/* Stark Asymmetric High-Contrast Accents */}
-        <div className="absolute top-0 right-0 w-[30vw] h-[30vw] bg-[radial-gradient(circle,rgba(43,92,255,0.05)_0%,transparent_70%)] pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] bg-[radial-gradient(circle,rgba(255,92,0,0.04)_0%,transparent_70%)] pointer-events-none"></div>
+      <div className="min-h-screen flex flex-col items-center pb-20 relative bg-[#faf6ee] overflow-hidden">
+        {/* Beautiful Floating Soft Organic Accent Shapes */}
+        <div className="absolute top-[-10%] left-[-10%] w-[45vw] h-[45vw] bg-[radial-gradient(circle,rgba(198,106,85,0.06)_0%,transparent_70%)] pointer-events-none rounded-full blur-[60px]"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[55vw] h-[55vw] bg-[radial-gradient(circle,rgba(62,86,67,0.05)_0%,transparent_70%)] pointer-events-none rounded-full blur-[60px]"></div>
+        <div className="absolute top-[35%] right-[-15%] w-[35vw] h-[35vw] bg-[radial-gradient(circle,rgba(212,163,89,0.04)_0%,transparent_70%)] pointer-events-none rounded-full blur-[60px]"></div>
 
         <div className="w-full max-w-[var(--spacing-container-max)] px-[var(--spacing-gutter)] relative z-10">
           {isLoggedIn ? (

@@ -33,8 +33,8 @@ export default function Upload() {
     <div className="flex flex-col gap-[var(--spacing-xl)] max-w-2xl mx-auto">
       
       <div>
-        <h1 className="text-3xl font-black mb-2 text-white uppercase tracking-tight font-display">העלאת תלוש</h1>
-        <p className="text-slate-400 text-sm font-bold uppercase tracking-wider">נא להעלות צילום ברור או קובץ PDF של תלוש השכר</p>
+        <h1 className="text-3xl font-extrabold mb-2 text-[var(--color-secondary)] font-display tracking-tight">העלאת תלוש</h1>
+        <p className="text-[var(--color-on-surface-variant)] text-sm font-semibold uppercase tracking-wider">נא להעלות צילום ברור או קובץ PDF של תלוש השכר</p>
       </div>
 
       {!isUploading ? (
@@ -42,49 +42,49 @@ export default function Upload() {
           {/* Upload Zone */}
           <div 
             onClick={handleUpload}
-            className="border-2 border-dashed border-[#27272a] hover:border-[var(--color-primary)] bg-[#141416] p-12 flex flex-col items-center justify-center gap-4 cursor-pointer transition-all duration-300 rounded-none shadow-[4px_4px_0px_0px_#27272a] hover:shadow-[6px_6px_0px_0px_#2b5cff] group"
+            className="border-2 border-dashed border-[var(--color-outline-variant)] hover:border-[var(--color-primary)] bg-white p-12 flex flex-col items-center justify-center gap-4 cursor-pointer transition-all duration-350 rounded-[var(--radius-xl)] shadow-ambient hover:shadow-[0_15px_40px_rgba(198,106,85,0.1)] group"
           >
-            <div className="bg-black text-[var(--color-primary)] p-4 border-2 border-[#27272a] group-hover:border-[var(--color-primary)] rounded-none mb-2 shadow-[2px_2px_0px_#d0c4ff] group-hover:shadow-[3px_3px_0px_#ff5c00] transition-all">
-              <UploadCloud size={32} />
+            <div className="bg-[var(--color-primary-container)] text-[var(--color-primary)] p-4 border border-[rgba(198,106,85,0.15)] rounded-2xl group-hover:scale-105 transition-transform duration-300">
+              <UploadCloud size={30} />
             </div>
-            <h3 className="font-black text-xl text-white uppercase font-display tracking-tight">לחץ כאן לבחירת קובץ</h3>
-            <p className="text-slate-500 text-xs font-bold tracking-wider uppercase">תומך ב- PDF, PNG, JPG (עד 10MB)</p>
+            <h3 className="font-extrabold text-xl text-[var(--color-secondary)] font-display tracking-tight">לחץ כאן לבחירת קובץ</h3>
+            <p className="text-[var(--color-on-surface-variant)] text-xs font-bold tracking-wider uppercase">תומך ב- PDF, PNG, JPG (עד 10MB)</p>
           </div>
 
           {/* Tips Section */}
           <section>
-            <h3 className="text-lg font-bold mb-4 text-slate-200 uppercase tracking-widest font-display">טיפים לצילום איכותי</h3>
+            <h3 className="text-lg font-bold mb-4 text-[var(--color-secondary)] font-display tracking-wide">טיפים לצילום איכותי</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Card className="avant-card-interactive flex flex-col items-center text-center gap-2 p-4">
-                <Sun className="text-[var(--color-coral)]" size={28} />
-                <h4 className="font-extrabold text-slate-200 text-base">תאורה טובה</h4>
-                <p className="text-xs text-slate-500 font-medium">צלם באור יום או תחת תאורה חזקה</p>
+              <Card className="editorial-card-interactive flex flex-col items-center text-center gap-2 p-5 rounded-[var(--radius-lg)]">
+                <Sun className="text-[var(--color-coral)]" size={26} />
+                <h4 className="font-bold text-[var(--color-secondary)] text-base mt-2">תאורה טובה</h4>
+                <p className="text-xs text-[var(--color-on-surface-variant)] leading-relaxed">צלם באור יום או תחת תאורה חזקה</p>
               </Card>
-              <Card className="avant-card-interactive flex flex-col items-center text-center gap-2 p-4">
-                <Maximize className="text-[var(--color-primary)]" size={28} />
-                <h4 className="font-extrabold text-slate-200 text-base">הכל בפריים</h4>
-                <p className="text-xs text-slate-500 font-medium">וודא שכל שולי התלוש מופיעים בתמונה</p>
+              <Card className="editorial-card-interactive flex flex-col items-center text-center gap-2 p-5 rounded-[var(--radius-lg)]">
+                <Maximize className="text-[var(--color-primary)]" size={26} />
+                <h4 className="font-bold text-[var(--color-secondary)] text-base mt-2">הכל בפריים</h4>
+                <p className="text-xs text-[var(--color-on-surface-variant)] leading-relaxed">וודא שכל שולי התלוש מופיעים בתמונה</p>
               </Card>
-              <Card className="avant-card-interactive flex flex-col items-center text-center gap-2 p-4">
-                <Smartphone className="text-[var(--color-secondary)]" size={28} />
-                <h4 className="font-extrabold text-slate-200 text-base">זווית ישרה</h4>
-                <p className="text-xs text-slate-500 font-medium">החזק את המצלמה במקביל לתלוש</p>
+              <Card className="editorial-card-interactive flex flex-col items-center text-center gap-2 p-5 rounded-[var(--radius-lg)]">
+                <Smartphone className="text-[var(--color-secondary)]" size={26} />
+                <h4 className="font-bold text-[var(--color-secondary)] text-base mt-2">זווית ישרה</h4>
+                <p className="text-xs text-[var(--color-on-surface-variant)] leading-relaxed">החזק את המצלמה במקביל לתלוש</p>
               </Card>
             </div>
           </section>
         </>
       ) : (
         /* Loading Simulation */
-        <Card className="avant-card p-8 flex flex-col items-center justify-center min-h-[400px] border-2 border-[#27272a] shadow-[6px_6px_0px_0px_#2b5cff] relative overflow-hidden rounded-none">
-          {/* Animated scanning bar overlay */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-[var(--color-primary)] animate-pulse"></div>
+        <Card className="editorial-card p-8 flex flex-col items-center justify-center min-h-[400px] relative overflow-hidden border border-[var(--color-outline)] shadow-[0_20px_50px_rgba(112,110,104,0.08)] rounded-[var(--radius-xl)]">
+          {/* Subtle scanning bar overlay */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-[var(--color-primary)] opacity-60"></div>
           
-          <div className="w-20 h-20 flex items-center justify-center border-2 border-[#27272a] bg-black mb-8 relative rounded-none">
-            <div className="absolute inset-0 border-t-2 border-[var(--color-coral)] animate-spin"></div>
+          <div className="w-20 h-20 flex items-center justify-center border border-[rgba(198,106,85,0.15)] bg-[var(--color-primary-container)] mb-8 relative rounded-2xl">
+            <div className="absolute inset-0 border-t-2 border-[var(--color-primary)] rounded-2xl animate-spin"></div>
             <UploadCloud size={24} className="text-[var(--color-primary)]" />
           </div>
           
-          <h2 className="text-2xl font-black mb-8 text-white uppercase tracking-tight font-display">הבינה המלאכותית מנתחת...</h2>
+          <h2 className="text-2xl font-extrabold mb-8 text-[var(--color-secondary)] font-display tracking-tight">הבינה המלאכותית מנתחת...</h2>
           
           <div className="w-full max-w-md flex flex-col gap-4">
             {steps.map((step, index) => {
@@ -92,18 +92,18 @@ export default function Upload() {
               const isCurrent = progressStep === index;
               
               return (
-                <div key={step.id} className="flex items-center gap-4 bg-black border border-[#27272a] p-3.5 rounded-none">
+                <div key={step.id} className="flex items-center gap-4 bg-[#faf6ee]/60 border border-[var(--color-outline)] p-4 rounded-xl">
                   {isCompleted ? (
                     <CheckCircle2 className="text-[var(--color-success)]" size={18} />
                   ) : isCurrent ? (
                     <div className="w-4 h-4 border-2 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin" />
                   ) : (
-                    <Circle className="text-slate-700" size={18} />
+                    <Circle className="text-[var(--color-outline-variant)]" size={18} />
                   )}
                   <span className={cn(
-                    "text-sm transition-colors duration-300 font-bold uppercase tracking-wider font-display",
-                    isCompleted ? "text-slate-350" : 
-                    isCurrent ? "text-[var(--color-primary)] font-black" : "text-slate-500"
+                    "text-sm transition-colors duration-300 font-bold font-sans tracking-wide",
+                    isCompleted ? "text-[var(--color-on-surface-variant)]" : 
+                    isCurrent ? "text-[var(--color-primary)] font-black" : "text-[var(--color-outline-variant)]"
                   )}>
                     {step.label}
                   </span>
