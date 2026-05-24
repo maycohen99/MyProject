@@ -1,65 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-surface: rgba(13, 16, 27, 0.4);
-  --color-surface-dim: rgba(13, 16, 27, 0.6);
-  --color-surface-bright: rgba(26, 32, 53, 0.5);
-  --color-surface-container-lowest: rgba(7, 8, 13, 0.8);
-  --color-surface-container-low: rgba(13, 16, 27, 0.5);
-  --color-surface-container: rgba(20, 24, 41, 0.5);
-  --color-surface-container-high: rgba(26, 32, 53, 0.6);
-  --color-surface-container-highest: rgba(38, 47, 78, 0.7);
+  --color-surface: #141416;
+  --color-surface-dim: #0e0e10;
+  --color-surface-bright: #1c1c1f;
+  --color-surface-container-lowest: #09090b;
+  --color-surface-container-low: #0e0e10;
+  --color-surface-container: #141416;
+  --color-surface-container-high: #1c1c1f;
+  --color-surface-container-highest: #27272a;
   
-  --color-on-surface: #f8fafc;
-  --color-on-surface-variant: #94a3b8;
-  --color-inverse-surface: #f8fafc;
-  --color-inverse-on-surface: #07080d;
+  --color-on-surface: #f4f4f5;
+  --color-on-surface-variant: #a1a1a9;
+  --color-inverse-surface: #f4f4f5;
+  --color-inverse-on-surface: #09090b;
   
-  --color-outline: rgba(255, 255, 255, 0.1);
-  --color-outline-variant: rgba(255, 255, 255, 0.15);
-  --color-surface-tint: #00f0ff;
+  --color-outline: #27272a;
+  --color-outline-variant: #3f3f46;
+  --color-surface-tint: #2b5cff;
   
-  --color-primary: #00f0ff; /* Glowing Cyan */
-  --color-on-primary: #07080d;
-  --color-primary-container: rgba(0, 240, 255, 0.1);
-  --color-on-primary-container: #00f0ff;
-  --color-inverse-primary: #9d4edd;
+  --color-primary: #2b5cff; /* Electric Cobalt Blue */
+  --color-on-primary: #ffffff;
+  --color-primary-container: rgba(43, 92, 255, 0.1);
+  --color-on-primary-container: #2b5cff;
+  --color-inverse-primary: #d0c4ff;
   
-  --color-secondary: #9d4edd; /* Electric Neon Violet */
-  --color-on-secondary: #ffffff;
-  --color-secondary-container: rgba(157, 78, 221, 0.1);
-  --color-on-secondary-container: #9d4edd;
+  --color-secondary: #d0c4ff; /* Pale Lavender */
+  --color-on-secondary: #09090b;
+  --color-secondary-container: rgba(208, 196, 255, 0.1);
+  --color-on-secondary-container: #d0c4ff;
   
-  --color-coral: #ff007f; /* Vivid Magenta Accent */
+  --color-coral: #ff5c00; /* Vibrant Tangerine Orange */
   
-  --color-error: #ff3366; /* Neon Hot Red */
+  --color-error: #ef4444;
   --color-on-error: #ffffff;
-  --color-error-container: rgba(255, 51, 102, 0.1);
-  --color-on-error-container: #ff3366;
+  --color-error-container: rgba(239, 68, 68, 0.1);
+  --color-on-error-container: #ef4444;
   
-  --color-success: #00f5a0; /* Minty Neon Green */
-  --color-success-container: rgba(0, 245, 160, 0.1);
-  --color-on-success-container: #00f5a0;
+  --color-success: #10b981;
+  --color-success-container: rgba(16, 185, 129, 0.1);
+  --color-on-success-container: #10b981;
   
-  --color-background: #07080d; /* Midnight Charcoal Black */
-  --color-on-background: #f8fafc;
-  --color-surface-variant: rgba(20, 24, 41, 0.4);
+  --color-background: #09090b; /* Monochromatic dark base */
+  --color-on-background: #f4f4f5;
+  --color-surface-variant: #1c1c1f;
   
-  /* Modern Corner Radii */
-  --radius-sm: 6px;
-  --radius-DEFAULT: 12px;
-  --radius-md: 14px;
-  --radius-lg: 18px;
-  --radius-xl: 24px;
+  /* Bold Geometric Corner Radii */
+  --radius-sm: 0px;
+  --radius-DEFAULT: 4px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
   --radius-full: 9999px;
   
-  --font-sans: "Inter", "Plus Jakarta Sans", sans-serif;
-  --font-display: "Outfit", "Inter", sans-serif;
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-display: "Syne", sans-serif;
 
-  /* Glassmorphism & Cyber Elevations */
-  --shadow-ambient: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  --shadow-ambient-hover: 0 8px 32px 0 rgba(0, 240, 255, 0.15), 0 0 20px 0 rgba(255, 0, 127, 0.1);
-
+  /* Asymmetric high contrast shadows */
+  --shadow-ambient: 4px 4px 0px 0px #27272a;
+  --shadow-ambient-hover: 6px 6px 0px 0px #2b5cff;
+  
   /* Spacing System */
   --spacing-unit: 4px;
   --spacing-xs: 4px;
@@ -87,45 +88,76 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     color: var(--color-on-background);
-    font-weight: 700;
-    letter-spacing: -0.025em;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
   }
 }
 
-/* Custom glow utility animations */
-.glow-cyan {
-  box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
-  border: 1px solid rgba(0, 240, 255, 0.25);
+/* Geometric border variations */
+.geo-border {
+  border: 2px solid #27272a;
 }
 
-.glow-magenta {
-  box-shadow: 0 0 25px rgba(255, 0, 127, 0.15);
-  border: 1px solid rgba(255, 0, 127, 0.25);
+.geo-border-cobalt {
+  border: 2px solid #2b5cff;
 }
 
-.glow-violet {
-  box-shadow: 0 0 25px rgba(157, 78, 221, 0.15);
-  border: 1px solid rgba(157, 78, 221, 0.25);
+.geo-border-tangerine {
+  border: 2px solid #ff5c00;
 }
 
-.glass-panel {
-  background: rgba(17, 19, 28, 0.4);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Sharp geometric background grid patterns */
+.grid-bg {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
-.glass-panel-interactive {
-  background: rgba(17, 19, 28, 0.45);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Avant-garde sharp grid boxes */
+.avant-card {
+  background: #141416;
+  border: 2px solid #27272a;
+  box-shadow: 4px 4px 0px 0px #27272a;
+  transition: all 0.2s ease-in-out;
 }
 
-.glass-panel-interactive:hover {
-  background: rgba(22, 26, 42, 0.6);
-  border-color: rgba(0, 240, 255, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(0, 240, 255, 0.15);
-  transform: translateY(-2px);
+.avant-card-interactive {
+  background: #141416;
+  border: 2px solid #27272a;
+  box-shadow: 4px 4px 0px 0px #27272a;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.avant-card-interactive:hover {
+  transform: translate(-2px, -2px);
+  border-color: #2b5cff;
+  box-shadow: 6px 6px 0px 0px #2b5cff;
+}
+
+.avant-btn-cobalt {
+  background: #2b5cff;
+  color: #ffffff;
+  border: 2px solid #09090b;
+  box-shadow: 3px 3px 0px 0px #d0c4ff;
+  transition: all 0.2s ease;
+}
+
+.avant-btn-cobalt:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px 0px #ff5c00;
+}
+
+.avant-btn-tangerine {
+  background: #ff5c00;
+  color: #09090b;
+  border: 2px solid #09090b;
+  box-shadow: 3px 3px 0px 0px #2b5cff;
+  transition: all 0.2s ease;
+}
+
+.avant-btn-tangerine:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px 0px #d0c4ff;
 }

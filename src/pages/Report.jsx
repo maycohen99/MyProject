@@ -38,20 +38,19 @@ export default function Report() {
     <div className="flex flex-col gap-[var(--spacing-xl)] max-w-3xl mx-auto pb-20">
       
       <div className="flex items-center gap-4">
-        <Link to="/" className="p-2 rounded-full hover:bg-white/5 text-slate-200 transition-colors border border-transparent hover:border-white/10">
-          <ArrowLeft size={24} />
+        <Link to="/" className="p-2 rounded-none hover:bg-white/5 text-slate-200 transition-colors border-2 border-transparent hover:border-[#27272a]">
+          <ArrowLeft size={20} />
         </Link>
-        <h1 className="text-3xl font-extrabold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">דוח תוצאות מנותח</h1>
+        <h1 className="text-3xl font-black text-white uppercase tracking-tight font-display">דוח תוצאות מנותח</h1>
       </div>
 
       {/* Status Strip */}
-      <div className="relative overflow-hidden bg-[rgba(255,51,102,0.06)] rounded-[var(--radius-xl)] p-6 shadow-ambient flex items-center gap-4 border border-[var(--color-error)]/30 border-r-8 border-r-[var(--color-error)]">
-        <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--color-error)] opacity-10 rounded-full blur-2xl"></div>
-        <div className="bg-gradient-to-br from-[var(--color-error)]/20 to-[var(--color-error)]/10 text-[var(--color-error)] p-3.5 rounded-full border border-[var(--color-error)]/30 shadow-[0_0_15px_rgba(255,51,102,0.2)]">
-          <AlertTriangle size={28} className="animate-pulse" />
+      <div className="relative overflow-hidden bg-black p-6 border-2 border-[var(--color-error)] shadow-[4px_4px_0px_0px_#ef4444] flex items-center gap-4 rounded-none">
+        <div className="bg-[var(--color-error)] text-white p-3 border-2 border-black rounded-none shadow-[2px_2px_0px_0px_#09090b]">
+          <AlertTriangle size={24} />
         </div>
         <div className="relative z-10">
-          <h2 className="text-xl font-extrabold text-slate-100">נמצאו אי דיוקים בתלוש</h2>
+          <h2 className="text-xl font-extrabold text-white uppercase font-display tracking-tight">נמצאו אי דיוקים בתלוש</h2>
           <p className="text-slate-300 text-lg mt-0.5">
             פוטנציאל להחזר של <span className="text-[var(--color-error)] font-black">₪2,340</span>
           </p>
@@ -60,43 +59,43 @@ export default function Report() {
 
       {/* Findings List */}
       <section className="flex flex-col gap-4">
-        <h3 className="text-xl font-bold text-slate-200">פירוט הליקויים</h3>
+        <h3 className="text-xl font-bold text-slate-200 uppercase tracking-widest font-display">פירוט הליקויים</h3>
         
         {errors.map(error => (
-          <Card key={error.id} className="p-0 overflow-hidden flex flex-col transition-all duration-300 border border-white/10 hover:border-white/20 bg-[rgba(13,16,27,0.4)] hover:bg-[rgba(17,21,37,0.55)]">
+          <Card key={error.id} className="p-0 overflow-hidden flex flex-col transition-all duration-200 border-2 border-[#27272a] bg-[#141416] hover:border-[var(--color-primary)]">
             <div className="p-5 flex justify-between items-start">
               <div className="flex-1">
                 <div className="flex items-center gap-2.5 mb-1.5">
                   <div className={cn(
-                    "w-2.5 h-2.5 rounded-full animate-pulse",
-                    error.severity === 'high' ? "bg-[var(--color-error)] drop-shadow-[0_0_6px_rgba(255,51,102,0.6)]" : "bg-[var(--color-secondary)] drop-shadow-[0_0_6px_rgba(157,78,221,0.6)]"
+                    "w-2 h-2 rounded-none",
+                    error.severity === 'high' ? "bg-[var(--color-error)]" : "bg-[var(--color-secondary)]"
                   )} />
-                  <h4 className="font-extrabold text-lg text-slate-100">{error.title}</h4>
+                  <h4 className="font-extrabold text-lg text-white uppercase font-display">{error.title}</h4>
                 </div>
-                <p className="text-slate-300 text-sm leading-relaxed">{error.description}</p>
+                <p className="text-slate-400 text-sm leading-relaxed">{error.description}</p>
               </div>
               
               <div className="text-left min-w-[110px]">
-                <div className="text-2xl font-black text-[var(--color-error)] drop-shadow-[0_0_8px_rgba(255,51,102,0.2)]">{error.amount}</div>
+                <div className="text-2xl font-black text-[var(--color-error)]">{error.amount}</div>
                 <button 
                   onClick={() => setExpandedErrorId(expandedErrorId === error.id ? null : error.id)}
-                  className="text-xs font-bold text-[var(--color-primary)] mt-3.5 flex items-center gap-1.5 hover:opacity-80 transition-opacity mr-auto uppercase tracking-wider"
+                  className="text-xs font-black text-[var(--color-primary)] mt-3.5 flex items-center gap-1.5 hover:text-white transition-colors mr-auto uppercase tracking-wider"
                 >
-                  למה? <ChevronDown size={14} className={cn("transition-transform duration-300", expandedErrorId === error.id && "rotate-180")} />
+                  למה? <ChevronDown size={14} className={cn("transition-transform duration-250", expandedErrorId === error.id && "rotate-180")} />
                 </button>
               </div>
             </div>
             
             {/* Expanded Citation */}
             <div className={cn(
-              "bg-white/[0.02] px-5 transition-all duration-500 ease-in-out overflow-hidden border-t border-white/5",
-              expandedErrorId === error.id ? "py-4 max-h-40 opacity-100" : "max-h-0 py-0 opacity-0 border-transparent pointer-events-none"
+              "bg-black px-5 transition-all duration-300 overflow-hidden border-t-2 border-[#27272a]",
+              expandedErrorId === error.id ? "py-4 max-h-40" : "max-h-0 py-0 border-transparent pointer-events-none"
             )}>
               <div className="flex items-start gap-3">
-                <div className="bg-gradient-to-br from-[var(--color-primary)]/20 to-[var(--color-primary)]/10 text-[var(--color-primary)] p-1 rounded-md border border-[var(--color-primary)]/30 mt-0.5">
+                <div className="bg-[var(--color-primary)] text-white p-0.5 border border-black mt-0.5">
                   <Check size={12} className="stroke-[3]" />
                 </div>
-                <p className="text-xs text-slate-400 leading-relaxed font-medium">{error.citation}</p>
+                <p className="text-xs text-slate-400 leading-relaxed font-bold">{error.citation}</p>
               </div>
             </div>
           </Card>
@@ -107,7 +106,7 @@ export default function Report() {
       <div className="mt-4">
         <Link 
           to="/action-center"
-          className="block w-full text-center bg-gradient-to-r from-[var(--color-coral)] via-[var(--color-secondary)] to-[var(--color-coral)] text-white text-lg font-black py-4.5 rounded-[var(--radius-lg)] shadow-[0_8px_32px_rgba(255,0,127,0.3)] hover:shadow-[0_8px_40px_rgba(255,0,127,0.5)] hover:scale-[1.01] active:scale-95 transition-all duration-300 border border-white/20 uppercase tracking-wide"
+          className="avant-btn-cobalt block w-full text-center text-sm font-black py-4.5 rounded-none uppercase tracking-widest"
         >
           מרכז פעולה - המשך טיפול
         </Link>

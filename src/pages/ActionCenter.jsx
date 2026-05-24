@@ -35,30 +35,29 @@ export default function ActionCenter() {
     <div className="flex flex-col gap-[var(--spacing-xl)] max-w-3xl mx-auto pb-20">
       
       <div className="flex items-center gap-4">
-        <Link to="/report" className="p-2 rounded-full hover:bg-white/5 text-slate-200 transition-colors border border-transparent hover:border-white/10">
-          <ArrowLeft size={24} />
+        <Link to="/report" className="p-2 rounded-none hover:bg-white/5 text-slate-200 transition-colors border-2 border-transparent hover:border-[#27272a]">
+          <ArrowLeft size={20} />
         </Link>
-        <h1 className="text-3xl font-extrabold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">מרכז פעולה</h1>
+        <h1 className="text-3xl font-black text-white uppercase tracking-tight font-display">מרכז פעולה</h1>
       </div>
 
-      <div className="relative overflow-hidden bg-[rgba(0,240,255,0.05)] rounded-[var(--radius-xl)] p-6 shadow-ambient border border-[var(--color-primary)]/20">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--color-primary)] opacity-10 rounded-full blur-3xl"></div>
-        <h2 className="text-xl font-extrabold text-[var(--color-primary)] mb-2 relative z-10">מחולל פניות למעסיק</h2>
-        <p className="text-slate-300 text-sm relative z-10">
+      <div className="relative overflow-hidden bg-black p-6 border-2 border-[var(--color-primary)] shadow-[4px_4px_0px_0px_#2b5cff] rounded-none">
+        <h2 className="text-xl font-extrabold text-[var(--color-primary)] mb-2 uppercase font-display tracking-tight">מחולל פניות למעסיק</h2>
+        <p className="text-slate-300 text-sm font-bold">
           הכנו עבורך נוסח מוכן לשליחה. בחרי את הסגנון שמתאים לך.
         </p>
       </div>
 
-      <Card className="flex flex-col gap-6 p-6 border border-white/10 bg-[rgba(13,16,27,0.4)]">
+      <Card className="flex flex-col gap-6 p-6 border-2 border-[#27272a] bg-[#141416]">
         {/* Toggle */}
-        <div className="flex bg-white/5 border border-white/10 rounded-[var(--radius-md)] p-1 relative w-full sm:w-fit backdrop-blur-sm">
+        <div className="flex bg-black border-2 border-[#27272a] rounded-none p-1 relative w-full sm:w-fit">
           <button
             onClick={() => setTone('friendly')}
             className={cn(
-              "flex-1 sm:px-8 py-2 rounded-[var(--radius-sm)] text-sm font-bold transition-all duration-300",
+              "flex-1 sm:px-8 py-2 rounded-none text-xs font-black uppercase tracking-wider transition-all duration-200",
               tone === 'friendly' 
-                ? "bg-gradient-to-r from-[var(--color-primary)]/20 to-[var(--color-primary)]/10 text-[var(--color-primary)] shadow-sm border border-[var(--color-primary)]/30" 
-                : "text-slate-400 hover:text-slate-200 border border-transparent"
+                ? "bg-[var(--color-primary)] text-white" 
+                : "text-slate-400 hover:text-slate-200"
             )}
           >
             סגנון ידידותי
@@ -66,10 +65,10 @@ export default function ActionCenter() {
           <button
             onClick={() => setTone('official')}
             className={cn(
-              "flex-1 sm:px-8 py-2 rounded-[var(--radius-sm)] text-sm font-bold transition-all duration-300",
+              "flex-1 sm:px-8 py-2 rounded-none text-xs font-black uppercase tracking-wider transition-all duration-200",
               tone === 'official' 
-                ? "bg-gradient-to-r from-[var(--color-primary)]/20 to-[var(--color-primary)]/10 text-[var(--color-primary)] shadow-sm border border-[var(--color-primary)]/30" 
-                : "text-slate-400 hover:text-slate-200 border border-transparent"
+                ? "bg-[var(--color-primary)] text-white" 
+                : "text-slate-400 hover:text-slate-200"
             )}
           >
             סגנון רשמי
@@ -82,32 +81,32 @@ export default function ActionCenter() {
             readOnly
             value={currentText}
             rows={6}
-            className="w-full p-4.5 rounded-[var(--radius-md)] bg-black/35 border border-white/10 text-slate-100 resize-none focus:outline-none focus:border-[var(--color-primary)]/50 font-sans leading-relaxed text-sm sm:text-base backdrop-blur-sm"
+            className="w-full p-4.5 rounded-none bg-black border-2 border-[#27272a] text-slate-200 resize-none focus:outline-none focus:border-[var(--color-primary)] font-sans leading-relaxed text-sm sm:text-base"
           />
         </div>
 
         {/* Actions */}
-        <div className="flex flex-col sm:flex-row gap-3.5 mt-2">
+        <div className="flex flex-col sm:flex-row gap-4 mt-2">
           <button
             onClick={handleWhatsApp}
-            className="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-[#20ba5a] to-[#25D366] text-white py-3 rounded-[var(--radius-md)] font-bold hover:scale-[1.01] active:scale-95 transition-all duration-300 shadow-[0_4px_20px_rgba(37,211,102,0.25)] hover:shadow-[0_4px_28px_rgba(37,211,102,0.4)]"
+            className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-black py-3 rounded-none font-black text-xs uppercase tracking-widest border-2 border-black shadow-[3px_3px_0px_#27272a] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[1px_1px_0px_#27272a] transition-all"
           >
-            <MessageCircle size={18} />
+            <MessageCircle size={16} />
             שליחה בוואטסאפ
           </button>
           
-          <div className="flex gap-3.5 flex-1">
+          <div className="flex gap-4 flex-1">
             <button
               onClick={handleCopy}
-              className="flex-1 flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-slate-100 py-3 rounded-[var(--radius-md)] font-bold hover:bg-white/10 hover:border-white/15 transition-all active:scale-95"
+              className="flex-1 flex items-center justify-center gap-2 bg-black border-2 border-[#27272a] text-slate-200 py-3 rounded-none font-bold text-xs uppercase tracking-widest hover:border-white transition-all"
             >
-              {copied ? <Check size={18} className="text-[var(--color-success)] drop-shadow-[0_0_8px_rgba(0,245,160,0.4)]" /> : <Copy size={18} />}
+              {copied ? <Check size={16} className="text-[var(--color-success)]" /> : <Copy size={16} />}
               {copied ? 'הועתק!' : 'העתקה'}
             </button>
             <button
-              className="flex-1 flex items-center justify-center gap-2 border border-white/10 text-slate-300 py-3 rounded-[var(--radius-md)] font-semibold hover:bg-white/5 transition-colors active:scale-95"
+              className="flex-1 flex items-center justify-center gap-2 border-2 border-[#27272a] text-slate-400 py-3 rounded-none font-bold text-xs uppercase tracking-widest hover:text-white transition-all"
             >
-              <Download size={18} />
+              <Download size={16} />
               הורדה
             </button>
           </div>

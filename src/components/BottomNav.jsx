@@ -14,7 +14,7 @@ export default function BottomNav() {
 
   return (
     <div className="fixed bottom-6 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none">
-      <nav className="pointer-events-auto bg-[rgba(15,19,33,0.75)] backdrop-blur-xl border border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.6)] rounded-full px-4 sm:px-6 py-2.5 max-w-[480px] w-full flex justify-between items-center gap-1">
+      <nav className="pointer-events-auto bg-[#141416] border-2 border-[#27272a] shadow-[4px_4px_0px_0px_#27272a] px-4 sm:px-6 py-2 max-w-[460px] w-full flex justify-between items-center gap-1">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = location.pathname === item.path;
@@ -24,18 +24,15 @@ export default function BottomNav() {
               key={item.path} 
               to={item.path}
               className={cn(
-                "flex flex-col items-center gap-1 py-2 px-3 sm:px-4 transition-all duration-300 rounded-full relative min-w-[64px]",
+                "flex flex-col items-center gap-1.5 py-2 px-3 sm:px-4 transition-all duration-200 relative min-w-[64px] border-2 border-transparent",
                 isActive 
-                  ? "text-[var(--color-primary)] scale-105" 
+                  ? "text-[var(--color-coral)] bg-black border-[#ff5c00]" 
                   : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
               )}
             >
-              {isActive && (
-                <span className="absolute inset-0 bg-gradient-to-r from-[rgba(0,240,255,0.12)] to-[rgba(157,78,221,0.12)] rounded-full border border-[var(--color-primary)]/20 -z-10" />
-              )}
-              <Icon size={20} className={cn("transition-transform duration-300", isActive && "scale-110")} />
+              <Icon size={18} className={cn("transition-transform duration-200", isActive && "scale-105")} />
               <span className={cn(
-                "text-[10px] sm:text-xs font-semibold tracking-wide",
+                "text-[10px] sm:text-xs font-extrabold tracking-wider uppercase font-display",
                 isActive ? "font-bold" : ""
               )}>
                 {item.label}
