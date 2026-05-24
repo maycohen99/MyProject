@@ -1,12 +1,27 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Upload from './pages/Upload';
 import Report from './pages/Report';
 import ActionCenter from './pages/ActionCenter';
+import Login from './pages/Login';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkAuth = () => {
+      setIsLoggedIn(localStorage.getItem('isLoggedIn') === 'true');
+    };
+    
+    window.addEventListener('authStatusChanged', checkAuth);
+    checkAuth();
+    
+    return () => window.removeEventListener('authStatusChanged', checkAuth);
+  }, []);
+
   return (
     <Router>
       <div className="min-h-screen flex flex-col items-center pb-20 relative bg-[#07080d] overflow-hidden">
@@ -16,17 +31,27 @@ function App() {
         <div className="absolute top-[30%] right-[-5%] w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(255,0,127,0.08)_0%,rgba(7,8,13,0)_70%)] pointer-events-none rounded-full blur-[80px]"></div>
 
         <div className="w-full max-w-[var(--spacing-container-max)] px-[var(--spacing-gutter)] relative z-10">
-          <Header />
-          <main className="py-[var(--spacing-md)]">
+          {isLoggedIn ? (
+            <>
+              <Header />
+              <main className="py-[var(--spacing-md)]">
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/upload" element={<Upload />} />
+                  <Route path="/report" element={<Report />} />
+                  <Route path="/action-center" element={<ActionCenter />} />
+                  <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
+              </main>
+            </>
+          ) : (
             <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/upload" element={<Upload />} />
-              <Route path="/report" element={<Report />} />
-              <Route path="/action-center" element={<ActionCenter />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="*" element={<Navigate to="/login" replace />} />
             </Routes>
-          </main>
+          )}
         </div>
-        <BottomNav />
+        {isLoggedIn && <BottomNav />}
       </div>
     </Router>
   );

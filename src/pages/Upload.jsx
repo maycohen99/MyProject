@@ -15,7 +15,12 @@ export default function Upload() {
     setTimeout(() => setProgressStep(1), 1500); // Structure Check
     setTimeout(() => setProgressStep(2), 3000); // Field Analysis
     setTimeout(() => setProgressStep(3), 4500); // AI Logic
-    setTimeout(() => navigate('/report'), 5500); // Navigate to report
+    setTimeout(() => {
+      // Simulate automatic name extraction from payslip
+      localStorage.setItem('userName', 'מאי כהן');
+      window.dispatchEvent(new Event('userNameChanged'));
+      navigate('/report');
+    }, 5500); // Navigate to report
   };
 
   const steps = [
