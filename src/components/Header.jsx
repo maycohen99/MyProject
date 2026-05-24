@@ -1,7 +1,28 @@
-import { LayoutDashboard } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { LayoutDashboard, Edit2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
+  const [name, setName] = useState('מאי');
+  const [isEditing, setIsEditing] = useState(false);
+  const [tempName, setTempName] = useState('מאי');
+
+  useEffect(() => {
+    const savedName = localStorage.getItem('userName');
+    if (savedName) {
+      setName(savedName);
+      setTempName(savedName);
+    }
+  }, []);
+
+  const handleSave = () => {
+    if (tempName.trim()) {
+      setName(tempName);
+      localStorage.setItem('userName', tempName);
+    }
+    setIsEditing(false);
+  };
+
   return (
     <header className="flex justify-between items-center py-6 mb-4 border-b border-white/5">
       <div className="flex items-center gap-3">
@@ -14,8 +35,30 @@ export default function Header() {
           </h1>
         </Link>
       </div>
-      <div className="text-slate-400 text-base">
-        שלום, <span className="font-semibold text-slate-100 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-inverse-primary)] bg-clip-text text-transparent">יובל</span>
+      <div className="text-slate-400 text-base flex items-center gap-1.5 select-none">
+        <span>שלום,</span>
+        {isEditing ? (
+          <div className="flex items-center gap-1">
+            <input
+              type="text"
+              value={tempName}
+              onChange={(e) => setTempName(e.target.value)}
+              onBlur={handleSave}
+              onKeyDown={(e) => e.key === 'Enter' && handleSave()}
+              className="bg-black/40 border border-[var(--color-primary)]/30 text-white rounded px-2 py-0.5 text-sm focus:outline-none focus:border-[var(--color-primary)] w-24 text-center font-bold"
+              autoFocus
+            />
+          </div>
+        ) : (
+          <span 
+            onClick={() => setIsEditing(true)}
+            className="font-bold text-slate-100 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-inverse-primary)] bg-clip-text text-transparent cursor-pointer hover:opacity-80 transition-all flex items-center gap-1 group"
+            title="לחץ כדי לשנות שם"
+          >
+            {name}
+            <Edit2 size={12} className="text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity ml-1 inline-block" />
+          </span>
+        )}
       </div>
     </header>
   );
