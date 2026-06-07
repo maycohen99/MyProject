@@ -1,0 +1,61 @@
+.nav {
+  position: fixed;
+  bottom: 20px; left: 20px; right: 20px;
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 64px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-xl);
+  max-width: calc(480px - 40px);
+  margin: 0 auto;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.25);
+  padding: 0 var(--spacing-sm);
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  color: #94a3b8;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  position: relative;
+}
+
+.tab:hover {
+  color: #f8fafc;
+  transform: translateY(-1px);
+}
+
+.tab.active { 
+  color: var(--color-secondary);
+}
+
+.label {
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-secondary);
+  letter-spacing: 0.02em;
+}
+
+.dot {
+  width: 4px; height: 4px;
+  background: var(--color-secondary);
+  border-radius: var(--radius-full);
+  margin-top: 2px;
+  box-shadow: 0 0 8px var(--color-secondary);
+}
+
+@media (min-width: 768px) {
+  .nav {
+    display: none; /* Hide bottom navbar on desktop screens */
+  }
+}

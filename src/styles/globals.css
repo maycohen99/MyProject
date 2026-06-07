@@ -1,143 +1,307 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap');
-@import "tailwindcss";
+/* ============================================
+   TlushSmart AI — Global CSS Custom Properties
+   Design System: Professional Corporate Aesthetic (Deep Navy & Emerald Green)
+   ============================================ */
 
-@theme {
-  --color-surface: #ffffff;
-  --color-surface-dim: #faf6ee;
-  --color-surface-bright: #ffffff;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #f7f2e7;
-  --color-surface-container: #faf6ee;
-  --color-surface-container-high: #eae3d4;
-  --color-surface-container-highest: #dcd4c3;
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* ── Colors (Trustworthy & Corporate Corporate Palette) ── */
+  --color-primary:     #0f172a;   /* Deep Navy Blue (Slate 900) */
+  --color-secondary:   #10b981;   /* Financial Emerald Green */
+  --color-accent:      #059669;   /* Darker Emerald Green */
+  --color-success:     #10b981;   /* Pure Emerald Green */
+  --color-error:       #ef4444;   /* Soft Financial Red */
+  --color-white:       #ffffff;
   
-  --color-on-surface: #242e26;
-  --color-on-surface-variant: #6b776d;
-  --color-inverse-surface: #242e26;
-  --color-inverse-on-surface: #faf6ee;
-  
-  --color-outline: #e8e2d5;
-  --color-outline-variant: #cfc9bc;
-  --color-surface-tint: #c66a55;
-  
-  --color-primary: #c66a55; /* Rich Terracotta */
-  --color-on-primary: #ffffff;
-  --color-primary-container: rgba(198, 106, 85, 0.08);
-  --color-on-primary-container: #c66a55;
-  --color-inverse-primary: #3e5643;
-  
-  --color-secondary: #3e5643; /* Deep Olive Green */
-  --color-on-secondary: #ffffff;
-  --color-secondary-container: rgba(62, 86, 67, 0.08);
-  --color-on-secondary-container: #3e5643;
-  
-  --color-coral: #d9532d; /* Burnt Orange Accent */
-  
-  --color-error: #b53f3f;
-  --color-on-error: #ffffff;
-  --color-error-container: rgba(181, 63, 63, 0.08);
-  --color-on-error-container: #b53f3f;
-  
-  --color-success: #3c7d5c;
-  --color-success-container: rgba(60, 125, 92, 0.08);
-  --color-on-success-container: #3c7d5c;
-  
-  --color-background: #faf6ee; /* Warm Cream background */
-  --color-on-background: #242e26;
-  --color-surface-variant: #f7f2e7;
-  
-  /* Smooth Organic Corner Radii */
-  --radius-sm: 8px;
-  --radius-DEFAULT: 16px;
-  --radius-md: 20px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
+  --color-background:  #f8fafc;   /* Modern light slate background */
+  --color-surface:     #ffffff;   /* Pure white card backgrounds */
+  --color-border:      #e2e8f0;   /* Sleek light gray borders */
+  --color-gold:        #f59e0b;   /* Modern Amber/Gold */
+
+  /* Alpha Tints for specific accents */
+  --color-primary-10:  rgba(15, 23, 42, 0.05);
+  --color-accent-10:   rgba(16, 185, 129, 0.1);
+  --color-success-10:  rgba(16, 185, 129, 0.1);
+  --color-error-10:    rgba(239, 68, 68, 0.1);
+  --color-gold-10:     rgba(245, 158, 11, 0.1);
+  --color-secondary-10: rgba(16, 185, 129, 0.1);
+
+  /* Typography Colors (Premium Grays) ── */
+  --color-text-primary:   #0f172a;   /* Slate 900 for high-end text */
+  --color-text-secondary: #64748b;   /* Slate 500 for secondary text */
+  --color-text-on-dark:   #ffffff;   /* White text on dark navy or green */
+
+  /* ── Typography (Clean Figma Web Trend) ── */
+  --font-heading: 'Assistant', 'Inter', sans-serif;
+  --font-secondary: 'Assistant', 'Inter', sans-serif;
+  --font-body:    'Assistant', 'Inter', sans-serif;
+  --font-mono:    Consolas, Monaco, 'Andale Mono', monospace;
+
+  --font-size-xs:   0.82rem;
+  --font-size-sm:   0.92rem;
+  --font-size-base: 1.0rem;
+  --font-size-lg:   1.125rem;
+  --font-size-xl:   1.25rem;
+  --font-size-h2:   1.75rem;
+  --font-size-h1:   2.25rem;
+  --font-size-hero: 3.25rem;
+
+  --font-weight-regular:   400;
+  --font-weight-medium:    500;
+  --font-weight-semibold:  600;
+  --font-weight-bold:      700;
+  --font-weight-extrabold: 800;
+  --font-weight-black:     900;
+
+  --line-height-tight:  1.25;
+  --line-height-normal: 1.6;
+  --line-height-loose:  1.8;
+
+  /* ── Spacing ── */
+  --spacing-xs:  0.375rem;
+  --spacing-sm:  0.75rem;
+  --spacing-md:  1.25rem;
+  --spacing-lg:  2.0rem;
+  --spacing-xl:  3.0rem;
+  --spacing-2xl: 4.5rem;
+
+  /* ── Border Radius (Elegant Rounded Corners) ── */
+  --radius-sm:   4px;       
+  --radius-md:   8px;       
+  --radius-lg:   12px;      
+  --radius-xl:   16px;      
+  --radius-2xl:  24px;
   --radius-full: 9999px;
-  
-  --font-sans: "Outfit", sans-serif;
-  --font-display: "Playfair Display", serif;
 
-  /* Smooth Sophisticated Drop Shadows */
-  --shadow-ambient: 0 15px 40px -15px rgba(112, 110, 104, 0.15);
-  --shadow-ambient-hover: 0 20px 45px -10px rgba(198, 106, 85, 0.18);
-  
-  /* Spacing System */
-  --spacing-unit: 4px;
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 40px;
-  --spacing-container-max: 1200px;
-  --spacing-gutter: 20px;
+  /* ── Shadows & Outlines (Modern Ambient Shadows) ── */
+  --border-width:  1px;     /* Clean subtle border standard */
+  --shadow-sm:     0 1px 3px rgba(15, 23, 42, 0.03), 0 1px 2px rgba(15, 23, 42, 0.02);
+  --shadow-md:     0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
+  --shadow-lg:     0 10px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  --shadow-xl:     0 20px 25px -5px rgba(15, 23, 42, 0.06), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+
+  /* ── Layout ── */
+  --max-width:      1200px;  /* Fully responsive up to desktop width! */
+  --nav-height:     76px;   
+  --header-height:  72px;
 }
 
-@layer base {
-  body {
-    background-color: var(--color-background);
-    color: var(--color-on-background);
-    font-family: var(--font-sans);
-    font-size: 16px;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    color: var(--color-on-background);
-    font-weight: 700;
-    line-height: 1.25;
-  }
+html { 
+  font-size: 16px; 
+  -webkit-text-size-adjust: 100%; 
+  background-color: var(--color-background); 
+  scroll-behavior: smooth;
 }
 
-/* Premium editorial classes */
-.editorial-card {
-  background: #ffffff;
-  border: 1px solid var(--color-outline);
-  box-shadow: var(--shadow-ambient);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  direction: rtl;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
 }
 
-.editorial-card-interactive {
-  background: #ffffff;
-  border: 1px solid var(--color-outline);
-  box-shadow: var(--shadow-ambient);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+/* Clean abstract grid on body for depth */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    linear-gradient(rgba(15, 23, 42, 0.01) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.01) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: -1;
+  pointer-events: none;
 }
 
-.editorial-card-interactive:hover {
-  transform: translateY(-4px);
-  border-color: rgba(198, 106, 85, 0.25);
-  box-shadow: var(--shadow-ambient-hover);
+h1, h2, h3, h4, h5, h6 { 
+  font-family: var(--font-heading); 
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: var(--line-height-tight);
 }
 
-.editorial-btn-primary {
-  background: var(--color-primary);
-  color: #ffffff;
-  border: 1px solid transparent;
-  box-shadow: 0 10px 25px -10px rgba(198, 106, 85, 0.4);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+button { 
+  cursor: pointer; 
+  border: none; 
+  background: none; 
+  font-family: inherit; 
+  transition: all 0.2s ease;
 }
 
-.editorial-btn-primary:hover {
-  background: #b55c44;
-  transform: translateY(-1px);
-  box-shadow: 0 12px 30px -8px rgba(198, 106, 85, 0.55);
+a { 
+  text-decoration: none; 
+  color: inherit; 
+  transition: all 0.2s ease;
 }
 
-.editorial-btn-secondary {
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-background); }
+::-webkit-scrollbar-thumb { 
+  background: #cbd5e1; 
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ── Utility classes ── */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  width: 100%;
+}
+
+.screen {
+  padding-top: calc(var(--header-height) + var(--spacing-md));
+  padding-bottom: calc(var(--nav-height) + var(--spacing-lg));
+  min-height: 100dvh;
+  box-sizing: border-box;
+}
+
+/* Clean, trustworthy shadow cards */
+.card {
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-md);
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  overflow: hidden;
+}
+
+/* Subtly animated green accent bar on hovering cards */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
   background: var(--color-secondary);
-  color: #ffffff;
-  border: 1px solid transparent;
-  box-shadow: 0 10px 25px -10px rgba(62, 86, 67, 0.4);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+.card:hover::before {
+  opacity: 1;
 }
 
-.editorial-btn-secondary:hover {
-  background: #314435;
+/* Primary Corporate Deep Navy Button */
+.btn-primary {
+  display: flex; align-items: center; justify-content: center; gap: var(--spacing-sm);
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border: var(--border-width) solid var(--color-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+.btn-primary:hover  { 
+  background: #1e293b;
+  border-color: #1e293b;
+  box-shadow: var(--shadow-md);
   transform: translateY(-1px);
-  box-shadow: 0 12px 30px -8px rgba(62, 86, 67, 0.55);
+}
+.btn-primary:active { 
+  transform: translateY(1px); 
+  box-shadow: var(--shadow-sm);
+}
+
+/* Emerald Green Accent/CTA Button */
+.btn-accent {
+  display: flex; align-items: center; justify-content: center; gap: var(--spacing-sm);
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-secondary);
+  color: var(--color-white);
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border: var(--border-width) solid var(--color-secondary);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+  transition: all 0.2s ease;
+}
+.btn-accent:hover  { 
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  transform: translateY(-1px);
+}
+.btn-accent:active { 
+  transform: translateY(1px); 
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.2);
+}
+
+/* Corporate Sleek Outline Button */
+.btn-outline {
+  display: flex; align-items: center; justify-content: center; gap: var(--spacing-sm);
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border: var(--border-width) solid #cbd5e1;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+.btn-outline:hover  { 
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.btn-outline:active { 
+  transform: translateY(1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Trustworthy Corporate Badges */
+.badge {
+  display: inline-flex; align-items: center;
+  font-size: 0.72rem;
+  font-weight: var(--font-weight-bold);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  white-space: nowrap;
+  font-family: var(--font-secondary);
+  transition: all 0.2s ease;
+}
+.badge-error { 
+  background: #fee2e2;   
+  color: #ef4444;   
+  border-color: #fecaca;
+}
+.badge-success { 
+  background: #d1fae5; 
+  color: #10b981; 
+  border-color: #a7f3d0;
+}
+
+@media (min-width: 768px) {
+  .screen {
+    padding-top: calc(var(--header-height) + var(--spacing-lg));
+    padding-bottom: var(--spacing-2xl);
+  }
 }

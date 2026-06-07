@@ -1,0 +1,107 @@
+.row {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.row:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.rowError { 
+  border-color: var(--color-border);
+}
+
+.rowOk { 
+  border-color: var(--color-border);
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+}
+
+.icon {
+  width: 32px; height: 32px;
+  border-radius: var(--radius-full);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.iconError { 
+  background: #fee2e2;   
+  color: #ef4444;   
+}
+.iconOk { 
+  background: #d1fae5; 
+  color: #10b981; 
+}
+
+.text { 
+  flex: 1; 
+  text-align: right; 
+}
+
+.label {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+}
+
+.amount {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-bold);
+  color: #ef4444;
+  margin-top: 1px;
+}
+
+.okLabel {
+  font-size: 0.76rem;
+  font-weight: var(--font-weight-medium);
+  color: #10b981;
+  margin-top: 1px;
+}
+
+.why {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: var(--color-text-secondary);
+  font-size: 0.74rem;
+  font-weight: var(--font-weight-semibold);
+  padding: 4px 8px;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+.why:hover { 
+  background: #e2e8f0;
+  color: var(--color-primary);
+  border-color: #94a3b8;
+}
+
+/* Diagnostic explanation card */
+.explanation {
+  padding: var(--spacing-md);
+  background: #f8fafc;
+  border-top: 1px solid var(--color-border);
+  position: relative;
+}
+
+.explanation p {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  text-align: right;
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-medium);
+}

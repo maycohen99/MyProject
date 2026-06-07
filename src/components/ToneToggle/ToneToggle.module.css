@@ -1,0 +1,58 @@
+.wrap {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.heading {
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  text-align: right;
+  margin-bottom: var(--spacing-sm);
+}
+
+.track {
+  display: flex;
+  background: #f1f5f9;
+  border-radius: var(--radius-md);
+  padding: 4px;
+  gap: 4px;
+}
+
+.option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px var(--spacing-sm);
+  font-size: 0.8rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  border: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.option:hover {
+  color: var(--color-primary);
+}
+
+.option.active {
+  background: var(--color-secondary);
+  color: #ffffff;
+  font-weight: var(--font-weight-bold);
+  box-shadow: var(--shadow-sm);
+}
+
+.hint {
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+  text-align: right;
+  margin-top: var(--spacing-sm);
+  font-weight: var(--font-weight-medium);
+}
