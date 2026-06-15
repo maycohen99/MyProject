@@ -6,7 +6,7 @@ import { SCANS } from "../data/mockData";
 import { supabase } from "../supabaseClient";
 import styles from "./ActionPage.module.css";
 
-function generateLetter(findings, total, tone = "formal") {
+function generateLetter(findings, total, tone = "formal", userName = "משתמש") {
   const errorFindings = findings ? findings.filter(f => f.type === "error") : [];
   
   const findingsListStr = errorFindings.map(f => {
@@ -16,6 +16,8 @@ function generateLetter(findings, total, tone = "formal") {
       return `- ${f.label}: נראה שהופרש פחות ממה שצריך (₪${f.amount.toLocaleString()} חסרים)`;
     }
   }).join("\n");
+
+  const firstName = userName ? userName.split(" ")[0] : "משתמש";
 
   if (tone === "formal") {
     return `לכבוד מחלקת משאבי אנוש,
@@ -30,7 +32,7 @@ ${findingsListStr}
 אבקשכם לבדוק את הנושא בדחיפות ולהשיב בתוך 14 ימי עסקים.
 
 בכבוד רב,
-יובל כהן`;
+${userName}`;
   } else {
     return `היי,
 
@@ -43,7 +45,7 @@ ${findingsListStr}
 אשמח שנדבר ונסדר את זה — אני בטוח שמדובר בטעות.
 
 תודה!
-יובל`;
+${firstName}`;
   }
 }
 
@@ -51,9 +53,35 @@ export default function ActionPage() {
   const [activeScan, setActiveScan] = useState(null);
   const [loading, setLoading] = useState(true);
   const [tone, setTone] = useState("formal");
+  const [userName, setUserName] = useState("משתמש");
 
   useEffect(() => {
-    async function fetchActiveScan() {
+    async function loadData() {
+      // 1. Fetch User Data
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          let resolvedName = user.user_metadata?.full_name || (user.email ? user.email.split("@")[0] : "משתמש");
+          
+          try {
+            const { data: profile } = await supabase
+              .from("users")
+              .select("full_name")
+              .eq("id", user.id)
+              .maybeSingle();
+            if (profile && profile.full_name) {
+              resolvedName = profile.full_name;
+            }
+          } catch (profileErr) {
+            console.warn("Gracefully handled profile fetch error:", profileErr);
+          }
+          setUserName(resolvedName);
+        }
+      } catch (userErr) {
+        console.error("Error loading user info in ActionPage:", userErr);
+      }
+
+      // 2. Fetch Active Scan
       try {
         const activeScanId = localStorage.getItem("activeScanId");
         
@@ -107,7 +135,7 @@ export default function ActionPage() {
         setLoading(false);
       }
     }
-    fetchActiveScan();
+    loadData();
   }, []);
 
   if (loading || !activeScan) {
@@ -119,7 +147,7 @@ export default function ActionPage() {
     );
   }
 
-  const letter = generateLetter(activeScan.findings, activeScan.total, tone);
+  const letter = generateLetter(activeScan.findings, activeScan.total, tone, userName);
 
   function shareWhatsApp() {
     window.open(`https://wa.me/?text=${encodeURIComponent(letter)}`, "_blank");

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Shield, Phone, LogOut, LayoutDashboard, Upload, FileText, MessageSquare } from "lucide-react";
+import { Shield, Phone, LogOut, LayoutDashboard, Upload, FileText, MessageSquare, Sparkles } from "lucide-react";
 import { supabase } from "../../supabaseClient";
 import styles from "./AppHeader.module.css";
 
@@ -48,6 +48,16 @@ export default function AppHeader() {
         </nav>
 
         <div className={styles.actions}>
+          <a
+            href="https://tally.so/r/ODVE7k"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.feedback}
+            aria-label="פידבק"
+          >
+            <Sparkles size={14} />
+            <span className={styles.btnText}>פידבק</span>
+          </a>
           <button className={styles.support} aria-label="תמיכה">
             <Phone size={14} />
             <span className={styles.btnText}>תמיכה</span>

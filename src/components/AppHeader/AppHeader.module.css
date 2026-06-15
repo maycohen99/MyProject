@@ -92,7 +92,7 @@
   gap: var(--spacing-sm);
 }
 
-.support, .logout {
+.feedback, .support, .logout {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -103,6 +103,18 @@
   font-weight: var(--font-weight-medium);
   transition: all 0.2s ease;
   border: 1px solid transparent;
+}
+
+.feedback {
+  background: var(--color-secondary-10);
+  color: var(--color-secondary);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+.feedback:hover {
+  background: var(--color-secondary);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+  border-color: var(--color-secondary);
 }
 
 .support {

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import * as Sentry from "@sentry/react";
 import Layout       from "./pages/Layout";
 import DashboardPage from "./pages/DashboardPage";
 import UploadPage    from "./pages/UploadPage";
@@ -7,6 +8,9 @@ import ReportPage    from "./pages/ReportPage";
 import ActionPage    from "./pages/ActionPage";
 import AuthPage      from "./pages/AuthPage";
 import { supabase }  from "./supabaseClient";
+
+const SentryRoutes = Sentry.withSentryReactRouterV6Routing(Routes);
+
 
 export default function App() {
   const [session, setSession] = useState(null);
@@ -83,7 +87,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
+      <SentryRoutes>
         {session ? (
           <Route element={<Layout />}>
             <Route path="/"           element={<DashboardPage />} />
@@ -99,7 +103,7 @@ export default function App() {
             <Route path="*" element={<Navigate to="/auth" replace />} />
           </>
         )}
-      </Routes>
+      </SentryRoutes>
     </BrowserRouter>
   );
 }
