@@ -37,9 +37,37 @@ export default function UploadPage() {
             .eq("id", user.id)
             .maybeSingle();
 
+          // Check if they have ever uploaded any paystub
+          let scanCount = 0;
+          try {
+            const { count, error: countError } = await supabase
+              .from("paystub")
+              .select("id", { count: "exact", head: true })
+              .eq("user_id", user.id);
+            if (!countError && count !== null) {
+              scanCount = count;
+            }
+          } catch (e) {
+            console.warn("Could not check paystub count:", e);
+          }
+
           if (profile) {
-            const credits = Number(profile.credits || 0);
+            let credits = Number(profile.credits || 0);
             const premiumStatus = Boolean(profile.is_premium);
+
+            // Safety fallback: if they have never scanned any paystubs and have 0 credits, grant them 1 free credit!
+            if (scanCount === 0 && credits === 0 && !premiumStatus) {
+              credits = 1;
+              try {
+                await supabase
+                  .from("users")
+                  .update({ credits: 1 })
+                  .eq("id", user.id);
+              } catch (updateErr) {
+                console.warn("Could not auto-grant free credit in DB:", updateErr);
+              }
+            }
+
             setUserCredits(credits);
             setIsPremium(premiumStatus);
 
