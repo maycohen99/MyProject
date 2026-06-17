@@ -71,14 +71,19 @@ export default function UploadPage() {
             setUserCredits(credits);
             setIsPremium(premiumStatus);
 
-            if (credits > 0 || premiumStatus) {
+            if (scanCount === 0 || credits > 0 || premiumStatus) {
               setPaymentState("unlocked");
             } else {
               setPaymentState("locked");
             }
           } else {
-            // Graceful default if profile doesn't exist
-            setPaymentState("locked");
+            // Graceful default if profile doesn't exist but they haven't scanned yet
+            if (scanCount === 0) {
+              setUserCredits(1);
+              setPaymentState("unlocked");
+            } else {
+              setPaymentState("locked");
+            }
           }
         } else {
           setPaymentState("locked");
