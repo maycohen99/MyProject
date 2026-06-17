@@ -63,6 +63,7 @@ export default function AuthPage() {
               id: data.user.id,
               full_name: fullName || "משתמש חדש",
               email: email,
+              credits: 1,
             });
 
           if (profileError) {

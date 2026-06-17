@@ -41,7 +41,7 @@ export default function App() {
               id: user.id,
               full_name: fullName,
               email: email,
-              credits: 0,
+              credits: 1,
               is_premium: false
             });
 
