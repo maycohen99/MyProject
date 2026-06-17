@@ -1,6 +1,9 @@
 # TlushSmart AI ⚖️💰
 **מערכת חכמה לניתוח תלושי שכר ומיצוי זכויות עובדים מבוססת AI**
 
+[![פרויקט חי ב-Vercel](https://img.shields.io/badge/Vercel-Live_Demo-brightgreen?style=for-the-badge&logo=vercel)](https://my-project-lyart-one-98.vercel.app)
+[![ריפו ב-GitHub](https://img.shields.io/badge/GitHub-Repository-blue?style=for-the-badge&logo=github)](https://github.com/maycohen99/MyProject.git)
+
 ![צילום מסך של מערכת TlushSmart AI](preview.png)
 
 ## 🚀 סקירה כללית
